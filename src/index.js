@@ -56,12 +56,16 @@ var ctx;
 function InitThis() {
     ctx = document.getElementById('myCanvas').getContext("2d");
  
-    $('#myCanvas').mousedown(function (e) {
-        mousePressed = true;
-        Draw(e.pageX - $(this).offset().left, e.pageY - $(this).offset().top, false);
-    });
+
+	$('#myCanvas').on('touchstart',function(e){
+		e.preventDefault();
+		mousePressed = true;
+		Draw(e.pageX - $(this).offset().left, e.pageY - $(this).offset().top, false);    
+	})
+
+
  
-    $('#myCanvas').mousemove(function (e) {
+    $('#myCanvas').on('touchmove',function (e) {
         if (mousePressed) {
             Draw(e.pageX - $(this).offset().left, e.pageY - $(this).offset().top, true);
         }
@@ -78,7 +82,7 @@ function InitThis() {
 function Draw(x, y, isDown) {
     if (isDown) {
         ctx.beginPath();
-        ctx.strokeStyle = 'red';
+        ctx.strokeStyle = 'green';
 		ctx.filter = "blur(3px)"; //模糊效果
         ctx.lineWidth = 20;
         ctx.lineJoin = "round";
