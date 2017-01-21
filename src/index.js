@@ -43,7 +43,7 @@ var l = console.log;
 });*/
 
 
-/*render((
+render((
   <div>offer</div>
 ), document.getElementById('root'))
 
@@ -79,6 +79,7 @@ function Draw(x, y, isDown) {
     if (isDown) {
         ctx.beginPath();
         ctx.strokeStyle = 'red';
+		ctx.filter = "blur(3px)"; //模糊效果
         ctx.lineWidth = 20;
         ctx.lineJoin = "round";
         ctx.moveTo(lastX, lastY);
@@ -96,7 +97,7 @@ function clearArea() {
 
 $(function(){
 	InitThis();
-})   */                    
+})                       
 
 
 
