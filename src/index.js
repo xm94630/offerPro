@@ -6,6 +6,26 @@ import $ from 'jquery'
 var l = console.log;
 
 
+//base64数据格式
+/*$(function(){
+	var canvas=document.getElementById('myCanvas');  
+	var ctx=canvas.getContext('2d');  
+	ctx.fillStyle='#FF0000';  
+	ctx.fillRect(0,0,100,100); 
+	var imageData =  canvas.toDataURL('image/png');  
+	//document.getElementById('myimage').src = imageData;
+	var data=imageData.substr(22);    
+	l(data);  
+})*/
+
+
+
+
+
+
+
+
+
 
 
 
