@@ -2,6 +2,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Router, Route, Link, browserHistory } from 'react-router'
 import $ from 'jquery'
+import './index.css'
 
 var l = console.log;
 
@@ -56,10 +57,12 @@ var ctx;
 function InitThis() {
     ctx = document.getElementById('myCanvas').getContext("2d");
  	
+	$('#myCanvas').css({width:$(window).width()})  
+
 	var img = new Image();         
     img.src = "http://avatar.csdn.net/F/7/7/1_itpinpai.jpg";  
     img.onload = function() {  
-      ctx.drawImage(img, 0, 0,360,360);  
+      ctx.drawImage(img, 0, 0,'200','200');  
     } 
 
 	$('#myCanvas').on('touchstart',function(e){
