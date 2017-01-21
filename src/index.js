@@ -56,13 +56,15 @@ var ctx;
  
 function InitThis() {
     ctx = document.getElementById('myCanvas').getContext("2d");
- 	
-	$('#myCanvas').css({width:$(window).width()})  
+
+	var w = $(window).width()
+
+	$('#myCanvas').attr("width",w).attr("height",w) 
 
 	var img = new Image();         
     img.src = "http://avatar.csdn.net/F/7/7/1_itpinpai.jpg";  
     img.onload = function() {  
-      ctx.drawImage(img, 0, 0,'200','200');  
+      ctx.drawImage(img, 0, 0,w,w);  
     } 
 
 	$('#myCanvas').on('touchstart',function(e){
