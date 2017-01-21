@@ -55,7 +55,12 @@ var ctx;
  
 function InitThis() {
     ctx = document.getElementById('myCanvas').getContext("2d");
- 
+ 	
+	var img = new Image();         
+    img.src = "http://avatar.csdn.net/F/7/7/1_itpinpai.jpg";  
+    img.onload = function() {  
+      ctx.drawImage(img, 0, 0,360,360);  
+    } 
 
 	$('#myCanvas').on('touchstart',function(e){
 		e.preventDefault();
@@ -81,15 +86,18 @@ function InitThis() {
  
 function Draw(x, y, isDown) {
     if (isDown) {
-        ctx.beginPath();
+ 
+        ctx.beginPath();
         ctx.strokeStyle = 'green';
-		ctx.filter = "blur(3px)"; //模糊效果
+		  ctx.filter = "blur(5px)"; //模糊效果
         ctx.lineWidth = 20;
         ctx.lineJoin = "round";
         ctx.moveTo(lastX, lastY);
         ctx.lineTo(x, y);
         ctx.closePath();
         ctx.stroke();
+
+
     }
     lastX = x; lastY = y;
 }
