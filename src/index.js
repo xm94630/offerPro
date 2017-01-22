@@ -81,10 +81,7 @@ function InitThis() {
         }
     });
  
-    $('#myCanvas').mouseup(function (e) {
-        mousePressed = false;
-    });
-        $('#myCanvas').mouseleave(function (e) {
+    $('#myCanvas').on('touchend',function (e) {
         mousePressed = false;
     });
 }
@@ -93,8 +90,10 @@ function Draw(x, y, isDown) {
     if (isDown) {
  
         ctx.beginPath();
-        ctx.strokeStyle = 'green';
-		  ctx.filter = "blur(5px)"; //模糊效果
+        ctx.strokeStyle = '#333';
+		ctx.filter = "blur(5px)"; //模糊效果
+		//ctx.globalAlpha=1
+
         ctx.lineWidth = 20;
         ctx.lineJoin = "round";
         ctx.moveTo(lastX, lastY);
