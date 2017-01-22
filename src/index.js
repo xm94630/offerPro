@@ -4,6 +4,8 @@ import { Router, Route, Link, browserHistory } from 'react-router'
 import $ from 'jquery'
 import './index.css'
 
+import OfferIndex from './OfferIndex'
+
 var l = console.log;
 
 
@@ -45,7 +47,7 @@ var l = console.log;
 
 
 render((
-  <div>offer</div>
+  <div><OfferIndex /></div>
 ), document.getElementById('root'))
 
 
