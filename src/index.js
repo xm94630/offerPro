@@ -4,8 +4,8 @@ import { Router, Route, browserHistory } from 'react-router'
 import $ from 'jquery'
 import './index.css'
 
-import OfferIndex from './OfferIndex'
-import OfferLists from './OfferLists'
+import OfferIndex from './module/OfferIndex.js'
+import OfferLists from './module/OfferLists'
 
 var l = console.log;
 

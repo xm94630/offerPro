@@ -1,6 +1,6 @@
 import React from 'react'
-import pic1 from './img/pic2.png'
-import card from './img/card.png'
+import pic1 from '../img/pic2.png'
+import card from '../img/card.png'
 
 export default React.createClass({
   render() {

@@ -1,5 +1,5 @@
 import React from 'react'
-import pic1 from './img/pic1.png'
+import pic1 from '../img/pic1.png'
 
 
 export default React.createClass({
