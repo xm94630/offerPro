@@ -1,12 +1,20 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { Router, Route, Link, browserHistory } from 'react-router'
+import { Router, Route, browserHistory } from 'react-router'
 import $ from 'jquery'
 import './index.css'
 
 import OfferIndex from './OfferIndex'
+import OfferLists from './OfferLists'
 
 var l = console.log;
+
+render((
+  <Router history={browserHistory}>
+    <Route path="/" component={OfferIndex}></Route>
+    <Route path="/OfferLists" component={OfferLists}></Route>
+  </Router>
+), document.getElementById('app'))
 
 
 //base64数据格式
@@ -46,7 +54,7 @@ var l = console.log;
 });*/
 
 
-render((
+/*render((
   <div><OfferIndex /></div>
 ), document.getElementById('root'))
 
@@ -115,7 +123,7 @@ function clearArea() {
 
 $(function(){
 	InitThis();
-})                       
+})     */                  
 
 
 
