@@ -1,9 +1,33 @@
 import React from 'react'
 import pic1 from '../img/pic1.png'
-
+import $ from 'jquery'
+var l = console.log;
 
 export default React.createClass({
   render() {
+
+
+    /*$.ajax({
+      method: "GET",
+      url: "http://os2017.51qiantu.com/offer/getOffer",
+      dataType: "jsonp",
+      jsonp: "callback",
+      data: {"idNum": '140427198902272915'}
+    }).done(function(data){
+        l(data);
+    });*/
+
+    /*$.ajax({
+        type: "GET",
+        url: "http://os2017.51qiantu.com/offer/getOffer",
+        dataType:"json",
+        //jsonp:"callback",
+        success: function(data){
+            console.log(data);
+        }
+    });*/
+
+
     return (
     	<div className="page OfferIndex">
     	    <img src={pic1} width="100%"/>

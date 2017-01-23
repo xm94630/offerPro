@@ -4,8 +4,9 @@ import { Router, Route, browserHistory } from 'react-router'
 import $ from 'jquery'
 import './index.css'
 
-import OfferIndex from './module/OfferIndex.js'
+import OfferIndex from './module/OfferIndex'
 import OfferLists from './module/OfferLists'
+import OfferEdit from './module/OfferEdit'
 
 var l = console.log;
 
@@ -13,6 +14,7 @@ render((
   <Router history={browserHistory}>
     <Route path="/" component={OfferIndex}></Route>
     <Route path="/OfferLists" component={OfferLists}></Route>
+    <Route path="/OfferEdit" component={OfferEdit}></Route>
   </Router>
 ), document.getElementById('app'))
 
