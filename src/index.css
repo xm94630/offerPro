@@ -760,7 +760,7 @@ body .MT20{margin-top:1rem;}
 	margin-top: 0.5rem;
 }
 .page{
-	position: relative;
+	/*position: relative;*/
 }
 .page p{
 	color:#666;
@@ -877,6 +877,12 @@ canvas{
 .checkInfoBox input,.checkInfoBox span{
   vertical-align: middle;
 }
+.checkInfoBox2{
+  text-align: center;
+  padding:0 4rem;
+  font-size: 0.8rem;
+  line-height: 1rem;
+}
 
 .wrapper{
   display: table;
@@ -893,9 +899,11 @@ canvas{
   border:none;
 }
 
-
-
-
+.adImgBox{
+  position: absolute;
+  bottom:0;
+  font-size:0 
+}
 
 
 

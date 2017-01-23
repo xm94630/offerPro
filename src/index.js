@@ -7,6 +7,7 @@ import './index.css'
 import OfferIndex from './module/OfferIndex'
 import OfferLists from './module/OfferLists'
 import OfferEdit from './module/OfferEdit'
+import OfferShare from './module/OfferShare'
 
 var l = console.log;
 
@@ -15,6 +16,7 @@ render((
     <Route path="/" component={OfferIndex}></Route>
     <Route path="/OfferLists" component={OfferLists}></Route>
     <Route path="/OfferEdit" component={OfferEdit}></Route>
+    <Route path="/OfferShare" component={OfferShare}></Route>
   </Router>
 ), document.getElementById('app'))
 
