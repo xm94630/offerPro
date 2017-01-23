@@ -8,6 +8,7 @@ import OfferIndex from './module/OfferIndex'
 import OfferLists from './module/OfferLists'
 import OfferEdit from './module/OfferEdit'
 import OfferShare from './module/OfferShare'
+import Loading from './module/Loading'
 
 var l = console.log;
 
@@ -19,6 +20,10 @@ render((
     <Route path="/OfferShare" component={OfferShare}></Route>
   </Router>
 ), document.getElementById('app'))
+
+render((
+	<Loading/>
+), document.getElementById('loading'))
 
 
 //base64数据格式
