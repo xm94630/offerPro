@@ -36,103 +36,90 @@ render((
 	//document.getElementById('myimage').src = imageData;
 	var data=imageData.substr(22);    
 	l(data);  
+
+
+	$.ajax({
+	    type: "POST",
+	    url: "http://os2017.51qiantu.com/offer/generate",
+	    dataType:"json",
+	    data: {
+	      "reName": '孙悟空',
+	      "pic":data,
+	      "watermark":1,
+	    },
+	    success: function(data){
+	        console.log('+>');
+	        console.log(data);
+	    }
+	});
+
 })*/
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+//查询所有offer
 /*$.ajax({
-  method: "POST",
-  url: "http://10.149.0.84/offer/getOffer",
-  dataType: "json",
-  data: {"idNum": '110110110110110110'}
-}).done(function(data){
-    l(data);
+    type: "GET",
+    url: "http://os2017.51qiantu.com/offer/getOffer",
+    dataType:"jsonp",
+    jsonp:"callback",
+    data: {"idNum": '140427198902272915'},
+    success: function(data){
+        console.log(data);
+    }
+});*/
+
+//查询单独offer
+/*$.ajax({
+    type: "GET",
+    url: "http://os2017.51qiantu.com/offer/detail/"+2,
+    dataType:"jsonp",
+    jsonp:"callback",
+    success: function(data){
+        console.log('==>');
+        console.log(data);
+    }
+});*/
+
+//提交offer修改信息
+/*$.ajax({
+    type: "POST",
+    url: "http://os2017.51qiantu.com/offer/generate",
+    dataType:"json",
+    data: {
+      "reName": '孙悟空',
+      "pic":'jdafoehiwohgfwewterwt',
+      "watermark":1,
+    },
+    success: function(data){
+        console.log(data);
+    }
+});*/
+
+//提交学生信息
+/*$.ajax({
+    type: "POST",
+    url: "http://os2017.51qiantu.com/student/save",
+    dataType:"json",
+    data: {
+      "name": "徐明",
+      "mobile": "13800001111",
+      "country": "中国",
+      "region": "浙江",
+      "degree": "博士"
+    },
+    success: function(data){
+        console.log('==>');
+        console.log(data);
+    }
 });*/
 
 
-/*render((
-  <div><OfferIndex /></div>
-), document.getElementById('root'))
 
 
 
-var mousePressed = false;
-var lastX, lastY;
-var ctx;
- 
-function InitThis() {
-    ctx = document.getElementById('myCanvas').getContext("2d");
 
-	var w = $(window).width()
-
-	$('#myCanvas').attr("width",w).attr("height",w) 
-
-	var img = new Image();         
-    img.src = "http://avatar.csdn.net/F/7/7/1_itpinpai.jpg";  
-    img.onload = function() {  
-      ctx.drawImage(img, 0, 0,w,w);  
-    } 
-
-	$('#myCanvas').on('touchstart',function(e){
-		e.preventDefault();
-		mousePressed = true;
-		Draw(e.pageX - $(this).offset().left, e.pageY - $(this).offset().top, false);    
-	})
-
-
- 
-    $('#myCanvas').on('touchmove',function (e) {
-        if (mousePressed) {
-            Draw(e.pageX - $(this).offset().left, e.pageY - $(this).offset().top, true);
-        }
-    });
- 
-    $('#myCanvas').on('touchend',function (e) {
-        mousePressed = false;
-    });
-}
- 
-function Draw(x, y, isDown) {
-    if (isDown) {
- 
-        ctx.beginPath();
-        ctx.strokeStyle = '#333';
-		ctx.filter = "blur(5px)"; //模糊效果
-		//ctx.globalAlpha=1
-
-        ctx.lineWidth = 20;
-        ctx.lineJoin = "round";
-        ctx.moveTo(lastX, lastY);
-        ctx.lineTo(x, y);
-        ctx.closePath();
-        ctx.stroke();
-
-
-    }
-    lastX = x; lastY = y;
-}
-     
-function clearArea() {
-    ctx.setTransform(1, 0, 0, 1, 0, 0);
-    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-}         
-
-$(function(){
-	InitThis();
-})     */                  
+                      
 
 
 
