@@ -784,7 +784,7 @@ body .MT20{margin-top:1rem;}
 
 .myInput{
 	height:2.2rem;
-	line-height: 2.2rem;
+	line-height: 2rem;
 	background: #faedd8;
 	border-radius: 1.1rem;
 	border: solid 0.1rem #dda928;
@@ -821,6 +821,13 @@ body .MT20{margin-top:1rem;}
 	color:#fff;
 	font-size: 1.5rem;
 }
+.studentName2{
+  position: absolute;
+  bottom:5%;
+  right:5%;
+  color:#fff;
+  font-size: 1.5rem;
+}
 .picBox{
 	position: relative;
 }
@@ -853,12 +860,38 @@ body .MT20{margin-top:1rem;}
 	height:100%;
 }
 
+.canvasBox{
+  box-sizing:border-box;
+  width:100%;
+  padding:0 0.75rem 0 0.75rem;
+  border:solid 1px blue;
+}
+canvas{
+  border:solid 2px red;
+  width:100%;
+}
 
+.checkInfoBox{
+  text-align: center;
+}
+.checkInfoBox input,.checkInfoBox span{
+  vertical-align: middle;
+}
 
-
-
-
-
+.wrapper{
+  display: table;
+  table-layout: fixed;
+  width:100%;
+}
+.wrapper div{
+  display: table-cell;
+  font-size: 0.8rem;
+  color:#fff;
+  border-left: solid 2px #853131;
+}
+.wrapper div:first-child{
+  border:none;
+}
 
 
 

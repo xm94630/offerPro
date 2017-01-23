@@ -17,15 +17,16 @@ export default React.createClass({
         l(data);
     });*/
 
-    /*$.ajax({
+    $.ajax({
         type: "GET",
         url: "http://os2017.51qiantu.com/offer/getOffer",
-        dataType:"json",
-        //jsonp:"callback",
+        dataType:"jsonp",
+        jsonp:"callback",
+        data: {"idNum": '140427198902272915'},
         success: function(data){
             console.log(data);
         }
-    });*/
+    });
 
 
     return (
