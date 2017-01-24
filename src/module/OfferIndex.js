@@ -6,12 +6,11 @@ var l = console.log;
 export default React.createClass({
 
   componentDidMount() {
-    $('.submitBtn').click(function(){
-      alert(123);
-    });
+    $(function(){
+          $('.loadingBox').show();
+    })
   },
   handleClick(){
-    alert(222);
   },
   render() {
     return (
