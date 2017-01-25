@@ -14,30 +14,41 @@ import Loading from './module/Loading'
 var l = console.log;
 
 // Reducer
-function counter(state= {ID:'',name:'',offers:[{}]}, action) {
+function counter(state= {ID:'',name:'',offers:[{}],offerIndex:0}, action) {
   const ID = state.ID
   const name = state.name
   const offers = state.offers
+  const offerIndex = state.offerIndex
   switch (action.type) {
     case 'saveID':
       return { 
         ID: action.ID,
         name: name,
-        offers: offers
+        offers: offers,
+        offerIndex: offerIndex
       }
     case 'saveName':
       return { 
         ID: ID,
         name: action.name,
-        offers: offers
+        offers: offers,
+        offerIndex: offerIndex
       }
     case 'saveOffers':
       l(action.data)
       return {
         ID:ID,
         name:name,
-        offers:action.data
-      };
+        offers:action.data,
+        offerIndex: offerIndex
+      }
+    case 'saveOfferIndex':
+      return {
+        ID:ID,
+        name:name,
+        offers:offers,
+        offerIndex:action.offerIndex
+      }
     default:
       return state
   }
