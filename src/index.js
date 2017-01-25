@@ -14,7 +14,7 @@ import Loading from './module/Loading'
 var l = console.log;
 
 // Reducer
-function counter(state= {ID:0}, action) {
+function counter(state= {ID:'1'}, action) {
   const ID = state.ID
   switch (action.type) {
     case 'increase':
@@ -77,16 +77,7 @@ render((
 
 
 
-//查询所有offer
-/*$.ajax({
-    type: "POST",
-    url: "http://os2017.51qiantu.com/offer/getOffer",
-    dataType:"json",
-    data: {"idNum": '140427198902272916'},
-    success: function(data){
-        console.log(data);
-    }
-});*/
+
 
 //查询单独offer
 /*$.ajax({

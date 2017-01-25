@@ -8,10 +8,10 @@ var l = console.log;
 var OfferLists = React.createClass({
   render() {
   	var onIncreaseClick = this.props.onIncreaseClick
-  	var value = this.props.value
+  	var ID = this.props.ID
     return (
     	<div className="page OfferLists">
-    		<div onClick={onIncreaseClick}>{value}</div>
+    		<div onClick={onIncreaseClick}>{ID}</div>
     		<div className="picBox">
 	    		<img src={pic1} width="100%"/>
 	    		<span className="studentName">令狐冲</span>
@@ -42,7 +42,7 @@ const increaseAction = { type: 'increase' }
 // Map Redux state to component props
 function mapStateToProps(state) {
   return {
-    value: state.count
+    ID: state.ID
   }
 }
 // Map Redux actions to component props
