@@ -14,11 +14,13 @@ import Loading from './module/Loading'
 var l = console.log;
 
 // Reducer
-function counter(state= {count:99}, action) {
-  const count = state.count
+function counter(state= {ID:0}, action) {
+  const ID = state.ID
   switch (action.type) {
     case 'increase':
-      return { count: count + 1 }
+      return { ID: ID + 1 }
+    case 'saveID':
+      return { ID: action.ID}
     default:
       return state
   }

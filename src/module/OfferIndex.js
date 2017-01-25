@@ -12,6 +12,11 @@ var OfferIndex = React.createClass({
     })
   },
   handleClick(){
+    alert(this.props.value)
+  },
+  updateIDValue(e){
+    var myID = e.target.value;
+    this.props.saveID(myID);
   },
   render() {
     var onIncreaseClick = this.props.onIncreaseClick
@@ -22,7 +27,7 @@ var OfferIndex = React.createClass({
           <img src={pic1} width="100%"/>
           <p className="MT10">输入身份证号码<br/>快速查询您的offer信息</p>
           <div className="sanjiao MT10"></div>
-          <input type="text" className="myInput W80P MT10"/>
+          <input type="text" onChange={this.updateIDValue} className="myInput W80P MT10"/>
           <div type="text" className="myInput submitBtn W80P MT10" onClick={this.handleClick} >查 询</div>
       </div>
     )
@@ -35,13 +40,14 @@ const increaseAction = { type: 'increase' }
 // Map Redux state to component props
 function mapStateToProps(state) {
   return {
-    value: state.count
+    value: state.ID
   }
 }
 // Map Redux actions to component props
 function mapDispatchToProps(dispatch) {
   return {
-    onIncreaseClick: () => dispatch(increaseAction)
+    onIncreaseClick: () => dispatch(increaseAction),
+    saveID: (ID) => dispatch({type: 'saveID',ID:ID})
   }
 }
 
