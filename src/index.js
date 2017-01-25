@@ -4,27 +4,49 @@ import { Router, Route, browserHistory } from 'react-router'
 import $ from 'jquery'
 import './index.css'
 
+import { createStore } from 'redux'
+import { Provider, connect } from 'react-redux'
+
 import OfferIndex from './module/OfferIndex'
 import OfferLists from './module/OfferLists'
 import OfferEdit from './module/OfferEdit'
 import OfferShare from './module/OfferShare'
 import Loading from './module/Loading'
 
+
+// Reducer
+function counter(state= {count:99}, action) {
+  const count = state.count
+  switch (action.type) {
+    case 'increase':
+      return { count: count + 1 }
+    default:
+      return state
+  }
+}
+// Store
+const store = createStore(counter)
+
+
+
+
 var l = console.log;
 
 render((
-  <Router history={browserHistory}>
-    <Route path="/" component={OfferIndex}></Route>
-    <Route path="/OfferLists" component={OfferLists}></Route>
-    <Route path="/OfferEdit" component={OfferEdit}></Route>
-    <Route path="/OfferShare" component={OfferShare}></Route>
-  </Router>
+  <Provider store={store}>
+    <Router history={browserHistory}>
+      <Route path="/" component={OfferIndex}></Route>
+      <Route path="/OfferLists" component={OfferLists}></Route>
+      <Route path="/OfferEdit" component={OfferEdit}></Route>
+      <Route path="/OfferShare" component={OfferShare}></Route>
+    </Router>
+  </Provider>
 ), document.getElementById('app'))
 
-render((
+/*render((
 	<Loading/>
 ), document.getElementById('loading'))
-
+*/
 
 //base64数据格式
 /*$(function(){
