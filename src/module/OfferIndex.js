@@ -21,6 +21,7 @@ var OfferIndex = React.createClass({
   handleClick(){
     var ID = this.props.ID;
     var saveOffers = this.props.saveOffers
+    var saveName = this.props.saveName
     //根据id查询所有offer
     $.ajax({
         type: "POST",
@@ -31,6 +32,8 @@ var OfferIndex = React.createClass({
             if(data && data.code==1){
               //根据ID，保存对应的offer的信息!
               saveOffers(data.ret);
+              //保存姓名
+              saveName(data.ret && data.ret[0] && data.ret[0].sName );
               //页面跳转
               hashHistory.push('/OfferLists');
             }else{
@@ -66,7 +69,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     saveID: (ID) => dispatch({type: 'saveID',ID:ID}),
-    saveOffers: (arr) => dispatch({type: 'saveOffers',data:arr})
+    saveOffers: (arr) => dispatch({type: 'saveOffers',data:arr}),
+    saveName: (name) => dispatch({type: 'saveName',name:name})
   }
 }
 

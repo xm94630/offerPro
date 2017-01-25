@@ -8,13 +8,15 @@ var l = console.log;
 var OfferLists = React.createClass({
   render() {
   	var ID = this.props.ID
+  	var name = this.props.name
   	var offers = this.props.offers
     return (
     	<div className="page OfferLists">
     		<div>{ID}</div>
+    		<div>{name}</div>
     		<div className="picBox">
 	    		<img src={pic1} width="100%"/>
-	    		<span className="studentName">令狐冲</span>
+	    		<span className="studentName">{this.props.name}</span>
     		</div>
     	    <p className="MT10">您有以下录取信息</p>
     	    <div className="cardGroup">
@@ -49,6 +51,7 @@ var OfferLists = React.createClass({
 function mapStateToProps(state) {
   return {
     ID: state.ID,
+    name: state.name,
     offers: state.offers
   }
 }
