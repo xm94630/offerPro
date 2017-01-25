@@ -14,7 +14,7 @@ import Loading from './module/Loading'
 var l = console.log;
 
 // Reducer
-function counter(state= {ID:'',offers:[]}, action) {
+function counter(state= {ID:'',offers:[{}]}, action) {
   const ID = state.ID
   const offers = state.offers
   switch (action.type) {

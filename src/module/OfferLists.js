@@ -8,6 +8,7 @@ var l = console.log;
 var OfferLists = React.createClass({
   render() {
   	var ID = this.props.ID
+  	var offers = this.props.offers
     return (
     	<div className="page OfferLists">
     		<div>{ID}</div>
@@ -17,17 +18,25 @@ var OfferLists = React.createClass({
     		</div>
     	    <p className="MT10">您有以下录取信息</p>
     	    <div className="cardGroup">
-	    	    <div className="cardBox MT5">
-	    	    	<img src={card} width="100%"/>
-	    	    	<a href="/">
-		    	    	<div className="offerBox">
-		    	    		<div className="offerBoxCon">
-			    	    		录取学院：<span className="schoolName">斯特拉斯克莱德</span><br/>
-								录取专业：<span className="schoolName">艺术与设计</span>
-							</div>
-		    	    	</div>
-	    	    	</a>
-	    	    </div>
+
+        		{
+    	            (offers).map(function(offer,i) {
+	  		            return (
+	  	    	    	    <div className="cardBox MT5" key={i}>
+	  	    	    	    	<img src={card} width="100%"/>
+	  	    	    	    	<a href="/">
+	  	    		    	    	<div className="offerBox">
+	  	    		    	    		<div className="offerBoxCon">
+	  	    			    	    		录取学院：<span className="schoolName">{offer.school}</span><br/>
+	  	    								录取专业：<span className="schoolName">{offer.major}</span>
+	  	    							</div>
+	  	    		    	    	</div>
+	  	    	    	    	</a>
+	  	    	    	    </div>
+	  		            )
+    	            })
+    			}
+
     	    </div>
     	    <p className="mini MT2 MB15">指导老师：<span className="teacherName">岳不群</span></p>
     	</div>
@@ -39,7 +48,8 @@ var OfferLists = React.createClass({
 // Map Redux state to component props
 function mapStateToProps(state) {
   return {
-    ID: state.ID
+    ID: state.ID,
+    offers: state.offers
   }
 }
 // Map Redux actions to component props
