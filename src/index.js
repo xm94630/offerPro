@@ -59,11 +59,10 @@ render((
 
 //查询所有offer
 /*$.ajax({
-    type: "GET",
+    type: "POST",
     url: "http://os2017.51qiantu.com/offer/getOffer",
-    dataType:"jsonp",
-    jsonp:"callback",
-    data: {"idNum": '140427198902272915'},
+    dataType:"json",
+    data: {"idNum": '140427198902272916'},
     success: function(data){
         console.log(data);
     }
@@ -72,9 +71,8 @@ render((
 //查询单独offer
 /*$.ajax({
     type: "GET",
-    url: "http://os2017.51qiantu.com/offer/detail/"+2,
-    dataType:"jsonp",
-    jsonp:"callback",
+    url: "http://os2017.51qiantu.com/offer/detail/"+8,
+    dataType:"json",
     success: function(data){
         console.log('==>');
         console.log(data);
@@ -82,19 +80,7 @@ render((
 });*/
 
 //提交offer修改信息
-/*$.ajax({
-    type: "POST",
-    url: "http://os2017.51qiantu.com/offer/generate",
-    dataType:"json",
-    data: {
-      "reName": '孙悟空',
-      "pic":'jdafoehiwohgfwewterwt',
-      "watermark":1,
-    },
-    success: function(data){
-        console.log(data);
-    }
-});*/
+
 
 //提交学生信息
 /*$.ajax({
