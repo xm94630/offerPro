@@ -3,7 +3,6 @@ import pic1 from '../img/pic1.png'
 import $ from 'jquery'
 import { createStore } from 'redux'
 import { Provider, connect } from 'react-redux'
-
 var l = console.log;
 
 var OfferIndex = React.createClass({
@@ -14,31 +13,6 @@ var OfferIndex = React.createClass({
   },
   handleClick(){
   },
-
-  onIncreaseClick(){},
-
-
-  propTypes: {
-
-  },
-
-  getDefaultProps() {
-    l(this.props)
-    return {
-      //xx:this.props.xx
-    };
-  },
-
-
-  /*const { value, onIncreaseClick } = this.props
-  return (
-    <div>
-      <span>{value}</span>
-      <button onClick={onIncreaseClick}>Increase</button>
-    </div>
-  )*/
-
-
   render() {
     var onIncreaseClick = this.props.onIncreaseClick
     var value = this.props.value
@@ -58,7 +32,6 @@ var OfferIndex = React.createClass({
 
 // Action
 const increaseAction = { type: 'increase' }
-
 // Map Redux state to component props
 function mapStateToProps(state) {
   return {
@@ -72,7 +45,7 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-
+//包装 OfferIndex
 export default connect(
   mapStateToProps,
   mapDispatchToProps

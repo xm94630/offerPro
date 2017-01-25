@@ -1,18 +1,17 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { Router, Route, browserHistory } from 'react-router'
+import { Router, Route, hashHistory } from 'react-router'
 import $ from 'jquery'
 import './index.css'
-
 import { createStore } from 'redux'
 import { Provider, connect } from 'react-redux'
-
 import OfferIndex from './module/OfferIndex'
 import OfferLists from './module/OfferLists'
 import OfferEdit from './module/OfferEdit'
 import OfferShare from './module/OfferShare'
 import Loading from './module/Loading'
 
+var l = console.log;
 
 // Reducer
 function counter(state= {count:99}, action) {
@@ -27,14 +26,9 @@ function counter(state= {count:99}, action) {
 // Store
 const store = createStore(counter)
 
-
-
-
-var l = console.log;
-
 render((
   <Provider store={store}>
-    <Router history={browserHistory}>
+    <Router history={hashHistory}>
       <Route path="/" component={OfferIndex}></Route>
       <Route path="/OfferLists" component={OfferLists}></Route>
       <Route path="/OfferEdit" component={OfferEdit}></Route>
@@ -42,6 +36,8 @@ render((
     </Router>
   </Provider>
 ), document.getElementById('app'))
+
+
 
 /*render((
 	<Loading/>
