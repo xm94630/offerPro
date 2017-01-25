@@ -7,11 +7,10 @@ var l = console.log;
 
 var OfferLists = React.createClass({
   render() {
-  	var onIncreaseClick = this.props.onIncreaseClick
   	var ID = this.props.ID
     return (
     	<div className="page OfferLists">
-    		<div onClick={onIncreaseClick}>{ID}</div>
+    		<div>{ID}</div>
     		<div className="picBox">
 	    		<img src={pic1} width="100%"/>
 	    		<span className="studentName">令狐冲</span>
@@ -37,8 +36,6 @@ var OfferLists = React.createClass({
 })
 
 
-// Action
-const increaseAction = { type: 'increase' }
 // Map Redux state to component props
 function mapStateToProps(state) {
   return {
@@ -48,7 +45,7 @@ function mapStateToProps(state) {
 // Map Redux actions to component props
 function mapDispatchToProps(dispatch) {
   return {
-    onIncreaseClick: () => dispatch(increaseAction)
+    //onIncreaseClick: () => dispatch(increaseAction)
   }
 }
 //包装 OfferLists

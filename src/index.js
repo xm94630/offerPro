@@ -14,13 +14,21 @@ import Loading from './module/Loading'
 var l = console.log;
 
 // Reducer
-function counter(state= {ID:'1'}, action) {
+function counter(state= {ID:'',offers:[]}, action) {
   const ID = state.ID
+  const offers = state.offers
   switch (action.type) {
-    case 'increase':
-      return { ID: ID + 1 }
     case 'saveID':
-      return { ID: action.ID}
+      return { 
+        ID: action.ID,
+        offers: offers,
+      }
+    case 'saveOffers':
+      l(action.data)
+      return {
+        ID:ID,
+        offers:action.data
+      };
     default:
       return state
   }

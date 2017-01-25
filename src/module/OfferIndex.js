@@ -20,6 +20,7 @@ var OfferIndex = React.createClass({
   //提交表单
   handleClick(){
     var ID = this.props.ID;
+    var saveOffers = this.props.saveOffers
     //根据id查询所有offer
     $.ajax({
         type: "POST",
@@ -28,6 +29,9 @@ var OfferIndex = React.createClass({
         data: {"idNum": ID}, 
         success: function(data){
             if(data && data.code==1){
+              //根据ID，保存对应的offer的信息!
+              saveOffers(data.ret);
+              //页面跳转
               hashHistory.push('/OfferLists');
             }else{
               alert('no')
@@ -36,10 +40,9 @@ var OfferIndex = React.createClass({
     });
   },
   render() {
-    var onIncreaseClick = this.props.onIncreaseClick
     return (
       <div className="page OfferIndex">
-          <div onClick={onIncreaseClick}>{this.props.ID}</div>
+          <div>{this.props.ID}</div>
           <img src={pic1} width="100%"/>
           <p className="MT10">输入身份证号码<br/>快速查询您的offer信息</p>
           <div className="sanjiao MT10"></div>
@@ -51,19 +54,18 @@ var OfferIndex = React.createClass({
 })
 
 
-// Action
-const increaseAction = { type: 'increase' }
 // Map Redux state to component props
 function mapStateToProps(state) {
   return {
-    ID: state.ID
+    ID: state.ID,
+    offers: state.offers
   }
 }
 // Map Redux actions to component props
 function mapDispatchToProps(dispatch) {
   return {
-    onIncreaseClick: () => dispatch(increaseAction),
-    saveID: (ID) => dispatch({type: 'saveID',ID:ID})
+    saveID: (ID) => dispatch({type: 'saveID',ID:ID}),
+    saveOffers: (arr) => dispatch({type: 'saveOffers',data:arr})
   }
 }
 
