@@ -1,6 +1,7 @@
 import React from 'react'
 import pic1 from '../img/pic2.png'
 import card from '../img/card.png'
+import {hashHistory} from 'react-router';
 import { createStore } from 'redux'
 import { Provider, connect } from 'react-redux'
 var l = console.log;
@@ -8,6 +9,7 @@ var l = console.log;
 var OfferLists = React.createClass({
 	selectOffer(index){
 		this.props.saveOfferIndex(index);
+		hashHistory.push('/OfferEdit');
 	},
   	render() {
 	  	var ID = this.props.ID
