@@ -24,7 +24,7 @@ var offerEidt = React.createClass({
         var img = new Image();         
         //img.src = "http://avatar.csdn.net/F/7/7/1_itpinpai.jpg";  
         img.src = imgUrl;  
-        //img.crossOrigin="anonymous";
+        img.crossOrigin="anonymous";
         //img.setAttribute('crossOrigin', 'use-credentials');
         img.onload = function() {  
           ctx.drawImage(img, 0, 0,w,w);  
@@ -74,11 +74,14 @@ var offerEidt = React.createClass({
         url: "http://os2017.51qiantu.com/offer/detail/"+ offerID,
         dataType:"json",
         success: function(data){
-            //console.log('-==>');
-            //console.log(data);
+            
+            console.log('-==>');
+            console.log(data);
             
             //offer图片
             var offerImgUrl = 'http://os2017.51qiantu.com/'+ data.ret.imgUrl;
+
+            l(offerImgUrl)
             
             //初始化canvas：内容、事件绑定等
             InitThis(offerImgUrl);
@@ -103,7 +106,7 @@ var offerEidt = React.createClass({
     var data = getPng();
     l(data)
 
-    /*$.ajax({
+    $.ajax({
         type: "POST",
         url: "http://os2017.51qiantu.com/offer/generate",
         dataType:"json",
@@ -111,18 +114,25 @@ var offerEidt = React.createClass({
           "reName": '孙悟空',
           "pic":data,
           "watermark":1,
-          "id":8
+          "id":1
         },
         success: function(data){
             console.log('+>');
             console.log(data);
         }
-    });*/
+    });
   },
 
   render() {
+    var ID = this.props.ID
+    var name = this.props.name
+    var offers = this.props.offers
+    var offerIndex = this.props.offerIndex
     return (
     	<div className="page OfferEdit">
+            <div>{ID}</div>
+            <div>{name}</div>
+            <div>{offerIndex}</div>
     		<div className="picBox">
 	    		<img src={pic} width="100%"/>
 	    		<span className="studentName2">令狐冲</span>

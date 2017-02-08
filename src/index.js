@@ -13,6 +13,7 @@ import Loading from './module/Loading'
 
 var l = console.log;
 
+
 // Reducer
 function counter(state= {ID:'',name:'',offers:[{}],offerIndex:0}, action) {
   const ID = state.ID
@@ -35,7 +36,6 @@ function counter(state= {ID:'',name:'',offers:[{}],offerIndex:0}, action) {
         offerIndex: offerIndex
       }
     case 'saveOffers':
-      l(action.data)
       return {
         ID:ID,
         name:name,
@@ -107,16 +107,7 @@ render((
 
 
 
-//查询单独offer
-/*$.ajax({
-    type: "GET",
-    url: "http://os2017.51qiantu.com/offer/detail/"+8,
-    dataType:"json",
-    success: function(data){
-        console.log('==>');
-        console.log(data);
-    }
-});*/
+
 
 //提交offer修改信息
 
