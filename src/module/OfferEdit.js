@@ -33,12 +33,16 @@ var offerEidt = React.createClass({
         $('#myCanvas').on('touchstart',function(e){
             e.preventDefault();
             mousePressed = true;
-            Draw(e.pageX - $(this).offset().left, e.pageY - $(this).offset().top, false);    
+            var pageX = (e.pageX || e.originalEvent.touches[0].pageX)
+            var pageY = (e.pageX || e.originalEvent.touches[0].pageY)
+            Draw(pageX - $(this).offset().left, pageY - $(this).offset().top, false);    
         })
      
         $('#myCanvas').on('touchmove',function (e) {
+            var pageX = (e.pageX || e.originalEvent.touches[0].pageX)
+            var pageY = (e.pageX || e.originalEvent.touches[0].pageY)
             if (mousePressed) {
-                Draw(e.pageX - $(this).offset().left, e.pageY - $(this).offset().top, true);
+                Draw(pageX - $(this).offset().left, pageY - $(this).offset().top, true);
             }
         });
      
@@ -51,9 +55,9 @@ var offerEidt = React.createClass({
         if (isDown) {
             ctx.beginPath();
             ctx.strokeStyle = '#333';
-            ctx.filter = "blur(5px)"; //模糊效果
+            ctx.filter = "blur(1px)"; //模糊效果
             //ctx.globalAlpha=1
-            ctx.lineWidth = 20;
+            ctx.lineWidth = 10;
             ctx.lineJoin = "round";
             ctx.moveTo(lastX, lastY);
             ctx.lineTo(x, y);
