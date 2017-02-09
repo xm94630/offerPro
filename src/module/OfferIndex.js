@@ -3,6 +3,7 @@ import pic1 from '../img/pic1.png'
 import $ from 'jquery'
 import {hashHistory} from 'react-router';
 import Loading from './Loading'
+import Dialog from './Dialog.js'
 import { createStore } from 'redux'
 import { Provider, connect } from 'react-redux'
 var l = console.log;
@@ -11,7 +12,9 @@ var OfferIndex = React.createClass({
 
   getInitialState(){
     return{
-      loadingShow:false
+      loadingShow:false,
+      diglogShow:false,
+      ajaxInfo:''
     }
   },
 
@@ -24,6 +27,11 @@ var OfferIndex = React.createClass({
   updateIDValue(e){
     var myID = e.target.value;
     this.props.saveID(myID);
+
+    this.setState({
+      loadingShow:false,
+      diglogShow:false
+    });
   },
   //提交表单
   handleClick(){
@@ -49,8 +57,11 @@ var OfferIndex = React.createClass({
               //页面跳转
               hashHistory.push('/OfferLists');
             }else{
-              that.setState({loadingShow:false});
-              alert('no')
+              that.setState({
+                loadingShow:false,
+                diglogShow:true,
+                ajaxInfo:"查询有误，请重试！"
+              });
             };
         }
     });
@@ -67,6 +78,7 @@ var OfferIndex = React.createClass({
           <div type="text" className="myInput submitBtn W80P MT10" onClick={this.handleClick} >查 询</div>
       
           <Loading isShow={this.state.loadingShow}/>
+          <Dialog isShow={this.state.diglogShow} info={this.state.ajaxInfo}/>
       </div>
     )
   }
