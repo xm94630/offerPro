@@ -9,8 +9,6 @@ import OfferIndex from './module/OfferIndex'
 import OfferLists from './module/OfferLists'
 import OfferEdit from './module/OfferEdit'
 import OfferShare from './module/OfferShare'
-import Loading from './module/Loading'
-
 var l = console.log;
 
 
@@ -68,47 +66,6 @@ render((
 ), document.getElementById('app'))
 
 
-/*render((
-	<Loading/>
-), document.getElementById('loading'))
-*/
-
-//base64数据格式
-/*$(function(){
-	var canvas=document.getElementById('myCanvas');  
-	var ctx=canvas.getContext('2d');  
-	ctx.fillStyle='#FF0000';  
-	ctx.fillRect(0,0,100,100); 
-	var imageData =  canvas.toDataURL('image/png');  
-	//document.getElementById('myimage').src = imageData;
-	var data=imageData.substr(22);    
-	l(data);  
-
-
-	$.ajax({
-	    type: "POST",
-	    url: "http://os2017.51qiantu.com/offer/generate",
-	    dataType:"json",
-	    data: {
-	      "reName": '孙悟空',
-	      "pic":data,
-	      "watermark":1,
-	    },
-	    success: function(data){
-	        console.log('+>');
-	        console.log(data);
-	    }
-	});
-
-})*/
-
-
-
-
-
-
-
-//提交offer修改信息
 
 
 //提交学生信息

@@ -2,6 +2,7 @@ import React from 'react'
 import pic1 from '../img/pic1.png'
 import $ from 'jquery'
 import {hashHistory} from 'react-router';
+import Loading from './Loading'
 import { createStore } from 'redux'
 import { Provider, connect } from 'react-redux'
 var l = console.log;
@@ -52,6 +53,8 @@ var OfferIndex = React.createClass({
           <div className="sanjiao MT10"></div>
           <input type="text" value={this.props.ID} onChange={this.updateIDValue} className="myInput W80P MT10"/>
           <div type="text" className="myInput submitBtn W80P MT10" onClick={this.handleClick} >查 询</div>
+      
+          <Loading isShow={false}/>
       </div>
     )
   }
