@@ -4,6 +4,7 @@ import offerPic from '../img/offerPic.png'
 import $ from 'jquery'
 import { createStore } from 'redux'
 import { Provider, connect } from 'react-redux'
+import {hashHistory} from 'react-router';
 var l = console.log;
 
 var offerEidt = React.createClass({
@@ -138,6 +139,8 @@ var offerEidt = React.createClass({
         success: function(data){
             console.log('+>');
             console.log(data);
+            //页面跳转到分享页面
+            hashHistory.push('/OfferShare');
         }
     });
   },
