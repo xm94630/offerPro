@@ -114,7 +114,7 @@ var offerEidt = React.createClass({
 
   //生成：
   createNewOffer(){
-
+    var that = this;
     function getPng(){
         var canvas=document.getElementById('myCanvas');  
         var imageData =  canvas.toDataURL('image/png');  
@@ -140,7 +140,8 @@ var offerEidt = React.createClass({
             console.log('+>');
             console.log(data);
             //页面跳转到分享页面
-            hashHistory.push('/OfferShare');
+            var offerID = that.props.offers[that.props.offerIndex].id;
+            hashHistory.push('/OfferShare/'+offerID);
         }
     });
   },
@@ -183,7 +184,7 @@ var offerEidt = React.createClass({
     		<div type="text" className="myInput submitBtn W80P MT10">
     			<div className="wrapper">
     		        <div className="box1" onClick={this.editFun}>编辑姓名</div>
-    		        <div className="box2" onClick={this.blurFun}>马赛克</div>
+    		        <div className="box2" onClick={this.blurFun}>涂抹</div>
     		        <div className="box3" onClick={this.backFun}>撤销</div>
     		    </div>
     		</div>

@@ -62,11 +62,10 @@ render((
       <Route path="/" component={OfferIndex}></Route>
       <Route path="/OfferLists" component={OfferLists}></Route>
       <Route path="/OfferEdit" component={OfferEdit}></Route>
-      <Route path="/OfferShare" component={OfferShare}></Route>
+      <Route path="/OfferShare/:offerId" component={OfferShare}></Route>
     </Router>
   </Provider>
 ), document.getElementById('app'))
-
 
 
 /*render((
