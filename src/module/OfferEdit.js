@@ -11,7 +11,8 @@ var offerEidt = React.createClass({
     return {
         myOfferName:this.props.name,
         bindTouchEvent:function(){},
-        restart:function(){}
+        restart:function(){},
+        isChecked:true
     };
   },
 
@@ -131,7 +132,7 @@ var offerEidt = React.createClass({
         data: {
           "reName": this.state.myOfferName,
           "pic":data,
-          "watermark":1,
+          "watermark":this.state.isChecked?1:0,
           "id":1
         },
         success: function(data){
@@ -152,6 +153,11 @@ var offerEidt = React.createClass({
   },
   changeName(event){
     this.setState({myOfferName: event.target.value});
+  },
+  handleCheckChange(event){
+    this.setState({
+        isChecked: event.target.checked
+    });
   },
 
   render() {
@@ -179,7 +185,7 @@ var offerEidt = React.createClass({
     		    </div>
     		</div>
     		<div className="checkInfoBox MT15">
-    			<input type="checkBox"/>
+    			<input type="checkBox" checked={this.state.isChecked} onChange={this.handleCheckChange}/>
 				<span>我同意添加新东方前途出国水印</span>
     		</div>
     		<div type="text" className="myInput submitBtn W80P MT10" onClick={this.createNewOffer}>生 成</div>
