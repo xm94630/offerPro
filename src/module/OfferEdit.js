@@ -7,14 +7,16 @@ import { Provider, connect } from 'react-redux'
 var l = console.log;
 
 var offerEidt = React.createClass({
-
   getInitialState:function(){
     return {
-        myOfferName:this.props.name
+        myOfferName:this.props.name,
+        bindTouchEvent:function(){}
     };
   },
 
   componentDidMount() {
+
+    var that = this;
 
     //获取offer的ID
     var offerID = this.props.offers[this.props.offerIndex].id;
@@ -29,33 +31,34 @@ var offerEidt = React.createClass({
         var w = $(window).width()
         $('#myCanvas').attr("width",w).attr("height",w); 
         var img = new Image();         
-        //img.src = "http://avatar.csdn.net/F/7/7/1_itpinpai.jpg";  
         img.src = imgUrl;  
         img.crossOrigin="anonymous";
-        //img.setAttribute('crossOrigin', 'use-credentials');
         img.onload = function() {  
           ctx.drawImage(img, 0, 0,w,w);  
         } 
 
-        $('#myCanvas').on('touchstart',function(e){
-            e.preventDefault();
-            mousePressed = true;
-            var pageX = (e.pageX || e.originalEvent.touches[0].pageX)
-            var pageY = (e.pageX || e.originalEvent.touches[0].pageY)
-            Draw(pageX - $(this).offset().left, pageY - $(this).offset().top, false);    
-        })
-     
-        $('#myCanvas').on('touchmove',function (e) {
-            var pageX = (e.pageX || e.originalEvent.touches[0].pageX)
-            var pageY = (e.pageX || e.originalEvent.touches[0].pageY)
-            if (mousePressed) {
-                Draw(pageX - $(this).offset().left, pageY - $(this).offset().top, true);
-            }
-        });
-     
-        $('#myCanvas').on('touchend',function (e) {
-            mousePressed = false;
-        });
+        function bindTouchEvent(){
+            $('#myCanvas').on('touchstart',function(e){
+                e.preventDefault();
+                mousePressed = true;
+                var pageX = (e.pageX || e.originalEvent.touches[0].pageX)
+                var pageY = (e.pageX || e.originalEvent.touches[0].pageY)
+                Draw(pageX - $(this).offset().left, pageY - $(this).offset().top, false);    
+            })
+         
+            $('#myCanvas').on('touchmove',function (e) {
+                var pageX = (e.pageX || e.originalEvent.touches[0].pageX)
+                var pageY = (e.pageX || e.originalEvent.touches[0].pageY)
+                if (mousePressed) {
+                    Draw(pageX - $(this).offset().left, pageY - $(this).offset().top, true);
+                }
+            });
+         
+            $('#myCanvas').on('touchend',function (e) {
+                mousePressed = false;
+            });
+        }
+        that.state.bindTouchEvent = bindTouchEvent;
     }
      
     function Draw(x, y, isDown) {
@@ -122,7 +125,7 @@ var offerEidt = React.createClass({
         url: "http://os2017.51qiantu.com/offer/generate",
         dataType:"json",
         data: {
-          "reName": '孙悟空',
+          "reName": this.state.myOfferName,
           "pic":data,
           "watermark":1,
           "id":1
@@ -138,7 +141,7 @@ var offerEidt = React.createClass({
     this.textInput.focus();
   },
   blurFun(){
-    alert(2)
+    this.state.bindTouchEvent();
   },
   backFun(){
     alert(3)
