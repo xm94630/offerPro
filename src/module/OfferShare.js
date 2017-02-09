@@ -5,6 +5,7 @@ import ad from '../img/ad.png'
 import { createStore } from 'redux'
 import { Provider, connect } from 'react-redux'
 import $ from 'jquery'
+import Sharing from './Sharing.js'
 
 var l = console.log;
 
@@ -72,7 +73,9 @@ var offerShare = React.createClass({
     		</div>
     		<div type="text" className="myInput submitBtn W80P MT10">分享喜悦</div>
     		<div className="adImgBox"><a href="#"><img src={ad} width="100%"/></a></div>
-    	</div>
+    	
+        <Sharing />
+      </div>
     )
   }
 })

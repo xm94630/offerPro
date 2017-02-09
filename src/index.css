@@ -907,7 +907,7 @@ canvas{
   font-size:0 
 }
 
-.loadingBox{
+.loadingBox,.shareBox{
   width:100%;
   height:30rem;
   position: absolute;
@@ -923,6 +923,13 @@ canvas{
   top:50%;
   margin-left:-1rem;
   margin-top:-1rem;
+}
+.shareBox img{
+  width:14rem;
+  height:12rem;
+  position: absolute;
+  z-index: 99;
+  right:0;
 }
 .mask{
   width:100%;
