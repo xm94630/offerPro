@@ -15,7 +15,8 @@ var offerShare = React.createClass({
       reName:'',
       imgNew:'',
       school:'',
-      major:''
+      major:'',
+      shareBox:false
     }
   },
   
@@ -57,6 +58,10 @@ var offerShare = React.createClass({
       } 
     }
   },
+  
+  shareFun(){
+    this.setState({shareBox:true})
+  },
 
   render() {
     return (
@@ -71,10 +76,10 @@ var offerShare = React.createClass({
     		<div className="checkInfoBox2 MT15">
 				<span>获得 {this.state.school} - {this.state.major} 录取offer！</span>
     		</div>
-    		<div type="text" className="myInput submitBtn W80P MT10">分享喜悦</div>
+    		<div type="text" className="myInput submitBtn W80P MT10" onClick={this.shareFun}>分享喜悦</div>
     		<div className="adImgBox"><a href="#"><img src={ad} width="100%"/></a></div>
     	
-        <Sharing />
+        <Sharing show={this.state.shareBox}/>
       </div>
     )
   }
