@@ -20,9 +20,6 @@ var OfferLists = React.createClass({
 	  	var selectOffer = this.selectOffer
 	    return (
 	    	<div className="page OfferLists">
-	    		<div>{ID}</div>
-	    		<div>{name}</div>
-	    		<div>{offerIndex}</div>
 	    		<div className="picBox">
 		    		<img src={pic1} width="100%"/>
 		    		<span className="studentName">{this.props.name}</span>

@@ -171,9 +171,6 @@ var offerEidt = React.createClass({
     var offerIndex = this.props.offerIndex
     return (
     	<div className="page OfferEdit">
-            <div>{ID}</div>
-            <div>{name}</div>
-            <div>{offerIndex}</div>
     		<div className="picBox">
 	    		<img src={pic} width="100%"/>
                 <input className="studentName2" type="text" name="myName" ref={(input) => { this.textInput = input; }} value={this.state.myOfferName} onChange={this.changeName}/>

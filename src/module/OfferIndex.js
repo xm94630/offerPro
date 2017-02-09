@@ -69,8 +69,6 @@ var OfferIndex = React.createClass({
   render() {
     return (
       <div className="page OfferIndex">
-          <div>{this.props.ID}</div>
-          <div>{this.props.offers[0].cName}</div>
           <img src={pic1} width="100%"/>
           <p className="MT10">输入身份证号码<br/>快速查询您的offer信息</p>
           <div className="sanjiao MT10"></div>
