@@ -827,6 +827,10 @@ body .MT20{margin-top:1rem;}
   right:5%;
   color:#fff;
   font-size: 1.5rem;
+  background: transparent;
+  width:6rem;
+  text-align: right;
+  border:none;
 }
 .picBox{
 	position: relative;

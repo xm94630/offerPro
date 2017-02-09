@@ -7,6 +7,13 @@ import { Provider, connect } from 'react-redux'
 var l = console.log;
 
 var offerEidt = React.createClass({
+
+  getInitialState:function(){
+    return {
+        myOfferName:this.props.name
+    };
+  },
+
   componentDidMount() {
 
     //获取offer的ID
@@ -128,13 +135,16 @@ var offerEidt = React.createClass({
   },
 
   editFun(){
-    alert(1)
+    this.textInput.focus();
   },
   blurFun(){
     alert(2)
   },
   backFun(){
     alert(3)
+  },
+  changeName(event){
+    this.setState({myOfferName: event.target.value});
   },
 
   render() {
@@ -149,7 +159,7 @@ var offerEidt = React.createClass({
             <div>{offerIndex}</div>
     		<div className="picBox">
 	    		<img src={pic} width="100%"/>
-	    		<span className="studentName2">{name}</span>
+                <input className="studentName2" type="text" name="myName" ref={(input) => { this.textInput = input; }} value={this.state.myOfferName} onChange={this.changeName}/>
     		</div>
     		<div className="canvasBox">
     			<canvas id="myCanvas" width="100" height="100"></canvas>
