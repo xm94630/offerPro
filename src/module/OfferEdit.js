@@ -10,7 +10,8 @@ var offerEidt = React.createClass({
   getInitialState:function(){
     return {
         myOfferName:this.props.name,
-        bindTouchEvent:function(){}
+        bindTouchEvent:function(){},
+        restart:function(){}
     };
   },
 
@@ -18,91 +19,94 @@ var offerEidt = React.createClass({
 
     var that = this;
 
-    //获取offer的ID
-    var offerID = this.props.offers[this.props.offerIndex].id;
-    
-    //canvas相关
-    var mousePressed = false;
-    var lastX, lastY;
-    var ctx; 
-    
-    function InitThis(imgUrl) {
-        ctx = document.getElementById('myCanvas').getContext("2d");
-        var w = $(window).width()
-        $('#myCanvas').attr("width",w).attr("height",w); 
-        var img = new Image();         
-        img.src = imgUrl;  
-        img.crossOrigin="anonymous";
-        img.onload = function() {  
-          ctx.drawImage(img, 0, 0,w,w);  
-        } 
+    function start(){
+        //获取offer的ID
+        var offerID = that.props.offers[that.props.offerIndex].id;
+        
+        //canvas相关
+        var mousePressed = false;
+        var lastX, lastY;
+        var ctx; 
+        
+        function InitThis(imgUrl) {
+            ctx = document.getElementById('myCanvas').getContext("2d");
+            var w = $(window).width()
+            $('#myCanvas').attr("width",w).attr("height",w); 
+            var img = new Image();         
+            img.src = imgUrl;  
+            img.crossOrigin="anonymous";
+            img.onload = function() {  
+              ctx.drawImage(img, 0, 0,w,w);  
+            } 
 
-        function bindTouchEvent(){
-            $('#myCanvas').on('touchstart',function(e){
-                e.preventDefault();
-                mousePressed = true;
-                var pageX = (e.pageX || e.originalEvent.touches[0].pageX)
-                var pageY = (e.pageX || e.originalEvent.touches[0].pageY)
-                Draw(pageX - $(this).offset().left, pageY - $(this).offset().top, false);    
-            })
-         
-            $('#myCanvas').on('touchmove',function (e) {
-                var pageX = (e.pageX || e.originalEvent.touches[0].pageX)
-                var pageY = (e.pageX || e.originalEvent.touches[0].pageY)
-                if (mousePressed) {
-                    Draw(pageX - $(this).offset().left, pageY - $(this).offset().top, true);
-                }
-            });
-         
-            $('#myCanvas').on('touchend',function (e) {
-                mousePressed = false;
-            });
+            function bindTouchEvent(){
+                $('#myCanvas').on('touchstart',function(e){
+                    e.preventDefault();
+                    mousePressed = true;
+                    var pageX = (e.pageX || e.originalEvent.touches[0].pageX)
+                    var pageY = (e.pageX || e.originalEvent.touches[0].pageY)
+                    Draw(pageX - $(this).offset().left, pageY - $(this).offset().top, false);    
+                })
+             
+                $('#myCanvas').on('touchmove',function (e) {
+                    var pageX = (e.pageX || e.originalEvent.touches[0].pageX)
+                    var pageY = (e.pageX || e.originalEvent.touches[0].pageY)
+                    if (mousePressed) {
+                        Draw(pageX - $(this).offset().left, pageY - $(this).offset().top, true);
+                    }
+                });
+             
+                $('#myCanvas').on('touchend',function (e) {
+                    mousePressed = false;
+                });
+            }
+            that.state.bindTouchEvent = bindTouchEvent;
         }
-        that.state.bindTouchEvent = bindTouchEvent;
-    }
-     
-    function Draw(x, y, isDown) {
-        if (isDown) {
-            ctx.beginPath();
-            ctx.strokeStyle = '#333';
-            ctx.filter = "blur(1px)"; //模糊效果
-            //ctx.globalAlpha=1
-            ctx.lineWidth = 10;
-            ctx.lineJoin = "round";
-            ctx.moveTo(lastX, lastY);
-            ctx.lineTo(x, y);
-            ctx.closePath();
-            ctx.stroke();
-        }
-        lastX = x; lastY = y;
-    }
-         
-    function clearArea() {
-        ctx.setTransform(1, 0, 0, 1, 0, 0);
-        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    }      
-    
-    //查询单独offer
-    $.ajax({
-        type: "GET",
-        url: "http://os2017.51qiantu.com/offer/detail/"+ offerID,
-        dataType:"json",
-        success: function(data){
-            
-            console.log('-==>');
-            console.log(data);
-            
-            //offer图片
-            var offerImgUrl = 'http://os2017.51qiantu.com/'+ data.ret.imgUrl;
-
-            l(offerImgUrl)
-            
-            //初始化canvas：内容、事件绑定等
-            InitThis(offerImgUrl);
-            
+         
+        function Draw(x, y, isDown) {
+            if (isDown) {
+                ctx.beginPath();
+                ctx.strokeStyle = '#333';
+                ctx.filter = "blur(1px)"; //模糊效果
+                //ctx.globalAlpha=1
+                ctx.lineWidth = 10;
+                ctx.lineJoin = "round";
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(x, y);
+                ctx.closePath();
+                ctx.stroke();
+            }
+            lastX = x; lastY = y;
         }
-    });
+             
+        function clearArea() {
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+        }      
+        
+        //查询单独offer
+        $.ajax({
+            type: "GET",
+            url: "http://os2017.51qiantu.com/offer/detail/"+ offerID,
+            dataType:"json",
+            success: function(data){
+                
+                console.log('-==>');
+                console.log(data);
+                
+                //offer图片
+                var offerImgUrl = 'http://os2017.51qiantu.com/'+ data.ret.imgUrl;
 
+                l(offerImgUrl)
+                
+                //初始化canvas：内容、事件绑定等
+                InitThis(offerImgUrl);            
+            }
+        });
+    }
+
+    start();
+    that.state.restart = start;
 
   },
 
@@ -144,7 +148,7 @@ var offerEidt = React.createClass({
     this.state.bindTouchEvent();
   },
   backFun(){
-    alert(3)
+    this.state.restart();
   },
   changeName(event){
     this.setState({myOfferName: event.target.value});
