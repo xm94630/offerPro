@@ -8,6 +8,13 @@ import { Provider, connect } from 'react-redux'
 var l = console.log;
 
 var OfferIndex = React.createClass({
+
+  getInitialState(){
+    return{
+      loadingShow:false
+    }
+  },
+
   componentDidMount() {
     $(function(){
       $('.loadingBox').show();
@@ -23,6 +30,10 @@ var OfferIndex = React.createClass({
     var ID = this.props.ID;
     var saveOffers = this.props.saveOffers
     var saveName = this.props.saveName
+
+    //loding界面
+    var that = this;
+    that.setState({loadingShow:true});
     //根据id查询所有offer
     $.ajax({
         type: "POST",
@@ -38,6 +49,7 @@ var OfferIndex = React.createClass({
               //页面跳转
               hashHistory.push('/OfferLists');
             }else{
+              that.setState({loadingShow:false});
               alert('no')
             };
         }
@@ -51,10 +63,10 @@ var OfferIndex = React.createClass({
           <img src={pic1} width="100%"/>
           <p className="MT10">输入身份证号码<br/>快速查询您的offer信息</p>
           <div className="sanjiao MT10"></div>
-          <input type="text" value={this.props.ID} onChange={this.updateIDValue} className="myInput W80P MT10"/>
+          <input placeholder="" type="text" value={this.props.ID} onChange={this.updateIDValue} className="myInput W80P MT10"/>
           <div type="text" className="myInput submitBtn W80P MT10" onClick={this.handleClick} >查 询</div>
       
-          <Loading isShow={false}/>
+          <Loading isShow={this.state.loadingShow}/>
       </div>
     )
   }
