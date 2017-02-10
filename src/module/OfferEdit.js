@@ -115,6 +115,8 @@ var offerEidt = React.createClass({
   //生成：
   createNewOffer(){
     var that = this;
+    var offerID = that.props.offers[that.props.offerIndex].id;
+
     function getPng(){
         var canvas=document.getElementById('myCanvas');  
         var imageData =  canvas.toDataURL('image/png');  
@@ -134,13 +136,12 @@ var offerEidt = React.createClass({
           "reName": this.state.myOfferName,
           "pic":data,
           "watermark":this.state.isChecked?1:0,
-          "id":1
+          "id":offerID
         },
         success: function(data){
             console.log('+>');
             console.log(data);
             //页面跳转到分享页面
-            var offerID = that.props.offers[that.props.offerIndex].id;
             hashHistory.push('/OfferShare/'+offerID);
         }
     });
