@@ -71,6 +71,44 @@ export default React.createClass({
     var that = this;
     that.setState({loadingShow:true});
 
+    //前端验证
+    if(this.state.name.replace(/(^\s*)|(\s*$)/g,'').length==0){
+      that.setState({
+        loadingShow:false,
+        diglogShow:true,
+        ajaxInfo:"客户姓名不能为空"
+      });
+      return;
+    }else if(!/1\d{10}$/.test(this.state.mobile)){
+      that.setState({
+        loadingShow:false,
+        diglogShow:true,
+        ajaxInfo:"手机号码格式错误"
+      });
+      return;
+    }else if(this.state.country.length==0){
+      that.setState({
+        loadingShow:false,
+        diglogShow:true,
+        ajaxInfo:"意向国家不能为空"
+      });
+      return;
+    }else if(this.state.degree.length==0){
+      that.setState({
+        loadingShow:false,
+        diglogShow:true,
+        ajaxInfo:"攻读学位不能为空"
+      });
+      return;
+    }else if(this.state.region.length==0){
+      that.setState({
+        loadingShow:false,
+        diglogShow:true,
+        ajaxInfo:"所在地区不能为空"
+      });
+      return;
+    }
+
     //提交学生信息
     $.ajax({
         type: "POST",
