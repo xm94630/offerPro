@@ -46,13 +46,13 @@ var offerEidt = React.createClass({
                     e.preventDefault();
                     mousePressed = true;
                     var pageX = (e.pageX || e.originalEvent.touches[0].pageX)
-                    var pageY = (e.pageX || e.originalEvent.touches[0].pageY)
+                    var pageY = (e.pageY || e.originalEvent.touches[0].pageY)
                     Draw(pageX - $(this).offset().left, pageY - $(this).offset().top, false);    
                 })
              
                 $('#myCanvas').on('touchmove',function (e) {
                     var pageX = (e.pageX || e.originalEvent.touches[0].pageX)
-                    var pageY = (e.pageX || e.originalEvent.touches[0].pageY)
+                    var pageY = (e.pageY || e.originalEvent.touches[0].pageY)
                     if (mousePressed) {
                         Draw(pageX - $(this).offset().left, pageY - $(this).offset().top, true);
                     }
