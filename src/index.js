@@ -9,6 +9,7 @@ import OfferIndex from './module/OfferIndex'
 import OfferLists from './module/OfferLists'
 import OfferEdit from './module/OfferEdit'
 import OfferShare from './module/OfferShare'
+import OfferForm from './module/OfferForm'
 var l = console.log;
 
 
@@ -61,6 +62,7 @@ render((
       <Route path="/OfferLists" component={OfferLists}></Route>
       <Route path="/OfferEdit" component={OfferEdit}></Route>
       <Route path="/OfferShare/:offerId" component={OfferShare}></Route>
+      <Route path="/OfferForm" component={OfferForm}></Route>
     </Router>
   </Provider>
 ), document.getElementById('app'))

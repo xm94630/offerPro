@@ -6,7 +6,7 @@ export default React.createClass({
   getInitialState(){
     return {
       show:this.props.isShow,
-      info:this.props.info,
+      info:this.props.info
     }
   },
 
@@ -32,7 +32,9 @@ export default React.createClass({
             <div className="dialogCon">
               <div className="title myHide">学生姓名：xxx</div>
               <div className="con">{this.state.info}</div>
-              <div type="text" className="myInput submitBtn W90P MT20" onClick={this.clickFun} >再次查询</div>
+              <div type="text" className="myInput submitBtn W90P MT20" onClick={this.clickFun} >
+                {this.props.type=="okBtn"?"确 认":"再次查询"}
+              </div>
             </div>
         </div>
       )

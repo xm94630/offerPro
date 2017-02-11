@@ -755,6 +755,7 @@ body .MT5{margin-top:0.5rem;}
 body .MT10{margin-top:0.5rem;}
 body .MT15{margin-top:0.75rem;}
 body .MT20{margin-top:1rem;}
+body .MT30{margin-top:1.5rem;}
 
 .OfferIndex img{
 	margin-top: 0.5rem;
@@ -789,7 +790,7 @@ body .MT20{margin-top:1rem;}
 	border-radius: 1.1rem;
 	border: solid 0.1rem #dda928;
 	font-size: 1rem;
-	color:#dda928;
+	color:#c26464;
 	box-sizing:border-box;
 	text-align: center;
 	display: block;
@@ -975,9 +976,37 @@ canvas{
   text-align: center;
 }
 
+select.myInput{
+  background:#faedd8;
+  -webkit-appearance: none;
+}
 
+.page.OfferForm input,
+.page.OfferForm select{
+  text-align: left;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
 
-
+.selectBox{
+  height:2.2rem;
+  line-height: 2rem;
+  font-size: 1rem;
+  color:#c26464;
+  box-sizing:border-box;
+  text-align: center;
+  display: block;
+  margin:0 auto;
+  position: relative;
+}
+.selectBox select{
+  width: 100%;
+}
+.selectBox .sanjiao{
+  position: absolute;
+  right:1.2rem;
+  top:0.9rem;
+}
 
 
 
