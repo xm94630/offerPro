@@ -97,10 +97,8 @@ var offerEidt = React.createClass({
                 console.log(data);
                 
                 //offer图片
-                var offerImgUrl = 'http://os2017.51qiantu.com/'+ data.ret.imgUrl;
+                var offerImgUrl = 'http://os2017.51qiantu.com'+ data.ret.imgUrl;
 
-                l(offerImgUrl)
-                
                 //初始化canvas：内容、事件绑定等
                 InitThis(offerImgUrl);            
             }
