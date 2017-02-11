@@ -77,7 +77,7 @@ var offerShare = React.createClass({
 				<span>获得 {this.state.school} - {this.state.major} 录取offer！</span>
     		</div>
     		<div type="text" className="myInput submitBtn W80P MT10" onClick={this.shareFun}>分享喜悦</div>
-    		<div className="adImgBox"><a href="#"><img src={ad} width="100%"/></a></div>
+    		<div className="adImgBox"><a href="/#/OfferForm"><img src={ad} width="100%"/></a></div>
     	
         <Sharing show={this.state.shareBox}/>
       </div>
