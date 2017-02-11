@@ -10,6 +10,9 @@ var l = console.log;
 var offerEidt = React.createClass({
   getInitialState:function(){
     return {
+        btnClass1:"box1",
+        btnClass2:"box2",
+        btnClass3:"box3",
         myOfferName:this.props.name,
         bindTouchEvent:function(){},
         restart:function(){},
@@ -145,15 +148,32 @@ var offerEidt = React.createClass({
     });
   },
 
+  //三按钮
   editFun(){
+    this.setState({
+        btnClass1:"box1 active",
+        btnClass2:"box2",
+        btnClass3:"box3"
+    });
     this.textInput.focus();
   },
   blurFun(){
+    this.setState({
+        btnClass1:"box1",
+        btnClass2:"box2 active",
+        btnClass3:"box3"
+    });
     this.state.bindTouchEvent();
   },
   backFun(){
+    this.setState({
+        btnClass1:"box1",
+        btnClass2:"box2",
+        btnClass3:"box3 active"
+    });
     this.state.restart();
   },
+
   changeName(event){
     this.setState({myOfferName: event.target.value});
   },
@@ -179,9 +199,9 @@ var offerEidt = React.createClass({
     		</div>	
     		<div type="text" className="myInput submitBtn W80P MT10">
     			<div className="wrapper">
-    		        <div className="box1" onClick={this.editFun}>编辑姓名</div>
-    		        <div className="box2" onClick={this.blurFun}>涂抹</div>
-    		        <div className="box3" onClick={this.backFun}>撤销</div>
+    		        <div className={this.state.btnClass1} onClick={this.editFun}>编辑姓名</div>
+    		        <div className={this.state.btnClass2} onClick={this.blurFun}>涂抹</div>
+    		        <div className={this.state.btnClass3} onClick={this.backFun}>撤销</div>
     		    </div>
     		</div>
     		<div className="checkInfoBox MT15">

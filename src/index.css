@@ -901,6 +901,9 @@ canvas{
 .wrapper div:first-child{
   border:none;
 }
+.wrapper div.active{
+  color:#ffc73a;
+}
 
 .adImgBox{
   position: absolute;
