@@ -10,6 +10,7 @@ var l = console.log;
 var offerEidt = React.createClass({
   getInitialState:function(){
     return {
+        edit:false, //只有编辑状态下开启！
         btnClass1:"box1",
         btnClass2:"box2",
         btnClass3:"box3",
@@ -46,19 +47,26 @@ var offerEidt = React.createClass({
 
             function bindTouchEvent(){
                 $('#myCanvas').on('touchstart',function(e){
-                    e.preventDefault();
-                    mousePressed = true;
-                    var pageX = (e.pageX || e.originalEvent.touches[0].pageX)
-                    var pageY = (e.pageY || e.originalEvent.touches[0].pageY)
-                    Draw(pageX - $(this).offset().left, pageY - $(this).offset().top, false);    
+
+                    //只有允许编辑画面下生效
+                    if(that.state.edit){
+                        e.preventDefault();
+                        mousePressed = true;
+                        var pageX = (e.pageX || e.originalEvent.touches[0].pageX)
+                        var pageY = (e.pageY || e.originalEvent.touches[0].pageY)
+                        Draw(pageX - $(this).offset().left, pageY - $(this).offset().top, false);  
+                    }  
                 })
              
                 $('#myCanvas').on('touchmove',function (e) {
-                    var pageX = (e.pageX || e.originalEvent.touches[0].pageX)
-                    var pageY = (e.pageY || e.originalEvent.touches[0].pageY)
-                    if (mousePressed) {
-                        Draw(pageX - $(this).offset().left, pageY - $(this).offset().top, true);
-                    }
+                    //只有允许编辑画面下生效
+                    if(that.state.edit){
+                        var pageX = (e.pageX || e.originalEvent.touches[0].pageX)
+                        var pageY = (e.pageY || e.originalEvent.touches[0].pageY)
+                        if (mousePressed) {
+                            Draw(pageX - $(this).offset().left, pageY - $(this).offset().top, true);
+                        }
+                    }
                 });
              
                 $('#myCanvas').on('touchend',function (e) {
@@ -151,6 +159,7 @@ var offerEidt = React.createClass({
   //三按钮
   editFun(){
     this.setState({
+        edit:false,
         btnClass1:"box1 active",
         btnClass2:"box2",
         btnClass3:"box3"
@@ -159,6 +168,7 @@ var offerEidt = React.createClass({
   },
   blurFun(){
     this.setState({
+        edit:true,
         btnClass1:"box1",
         btnClass2:"box2 active",
         btnClass3:"box3"
@@ -167,6 +177,7 @@ var offerEidt = React.createClass({
   },
   backFun(){
     this.setState({
+        edit:false,
         btnClass1:"box1",
         btnClass2:"box2",
         btnClass3:"box3 active"
