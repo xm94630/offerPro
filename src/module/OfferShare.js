@@ -1,6 +1,7 @@
 import React from 'react'
 import pic from '../img/fontPic2.png'
 import offerPic from '../img/offerPic.png'
+import offer from '../img/offer.jpeg'
 import ad from '../img/ad.png'
 import { createStore } from 'redux'
 import { Provider, connect } from 'react-redux'
@@ -65,7 +66,8 @@ var offerShare = React.createClass({
     return (
     	<div className="page OfferEdit">
     		<div className="picBox">
-	    		<img src={pic} width="100%"/>
+          <img src={offer} className="hidePic"/>
+          <img src={pic} width="100%"/>
 	    		<span className="studentName2">{this.state.reName}</span>
     		</div>
     		<div className="canvasBox">

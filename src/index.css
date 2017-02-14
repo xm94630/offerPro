@@ -1010,7 +1010,12 @@ select.myInput{
   right:1.2rem;
   top:0.9rem;
 }
-
+.hidePic{
+  width:0px;
+  height:0px;
+  position: absolute;
+  z-index: -999;
+}
 
 
 
