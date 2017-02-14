@@ -7,8 +7,6 @@ import { Provider, connect } from 'react-redux'
 import $ from 'jquery'
 import Sharing from './Sharing.js'
 
-var l = console.log;
-
 var offerShare = React.createClass({
   getInitialState(){
     return {

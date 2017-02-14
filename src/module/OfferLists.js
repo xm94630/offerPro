@@ -4,7 +4,6 @@ import card from '../img/card.png'
 import {hashHistory} from 'react-router';
 import { createStore } from 'redux'
 import { Provider, connect } from 'react-redux'
-var l = console.log;
 
 var OfferLists = React.createClass({
 	selectOffer(index){
