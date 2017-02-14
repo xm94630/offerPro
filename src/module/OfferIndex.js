@@ -6,7 +6,6 @@ import Loading from './Loading'
 import Dialog from './Dialog.js'
 import { createStore } from 'redux'
 import { Provider, connect } from 'react-redux'
-var l = console.log;
 
 var OfferIndex = React.createClass({
 

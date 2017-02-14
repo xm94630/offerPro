@@ -4,7 +4,6 @@ import $ from 'jquery'
 import {hashHistory} from 'react-router';
 import Loading from './Loading'
 import Dialog from './Dialog.js'
-var l = console.log;
 
 export default React.createClass({
 

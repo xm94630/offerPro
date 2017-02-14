@@ -5,7 +5,6 @@ import $ from 'jquery'
 import { createStore } from 'redux'
 import { Provider, connect } from 'react-redux'
 import {hashHistory} from 'react-router';
-var l = console.log;
 
 var offerEidt = React.createClass({
   getInitialState:function(){
@@ -135,7 +134,6 @@ var offerEidt = React.createClass({
     }
     //获取base64格式的图片
     var data = getPng();
-    l(data)
 
     $.ajax({
         type: "POST",
