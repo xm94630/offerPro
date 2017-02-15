@@ -14,7 +14,7 @@ var l = console.log;
 
 
 // Reducer
-function counter(state= {ID:'',name:'',offers:[{}],offerIndex:0}, action) {
+function counter(state= {ID:'',name:'',offers:[{}],offerIndex:-1}, action) {
   const ID = state.ID
   const name = state.name
   const offers = state.offers

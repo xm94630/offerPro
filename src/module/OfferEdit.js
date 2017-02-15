@@ -103,8 +103,8 @@ var offerEidt = React.createClass({
             dataType:"json",
             success: function(data){
                 
-                console.log('-==>');
-                console.log(data);
+                //console.log('-==>');
+                //console.log(data);
                 
                 //offer图片
                 var offerImgUrl = 'http://os2017.51qiantu.com'+ data.ret.imgUrl;

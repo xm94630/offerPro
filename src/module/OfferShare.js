@@ -22,6 +22,14 @@ var offerShare = React.createClass({
   componentDidMount(){
     var that = this;
     var offerId = this.props.params.offerId;
+
+    //判断的依据就是，如果是一步一步得到的，那么是有redux存储的！
+    if(that.props.offerIndex===-1){
+      //这个是微信上直接得到的分享页面
+    }else{
+      //这个是用户自己生成的分享页面，隐藏测测的那个链接
+      that.adBox.style.display = "none";
+    }
     
     //根据id查询所有offer
     $.ajax({
@@ -80,7 +88,7 @@ var offerShare = React.createClass({
 				<span>获得 {this.state.school} - {this.state.major} 录取offer！</span>
     		</div>
     		<div type="text" className="myInput submitBtn W80P MT10" onClick={this.shareFun}>分享喜悦</div>
-    		<div className="adImgBox"><a href="/#/OfferForm"><img src={ad} width="100%"/></a></div>
+    		<div className="adImgBox" ref={(adBox) => { this.adBox = adBox; }} ><a href="/#/OfferForm"><img src={ad} width="100%"/></a></div>
     	
         <Sharing show={this.state.shareBox}/>
       </div>
