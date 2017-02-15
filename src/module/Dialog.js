@@ -14,6 +14,10 @@ export default React.createClass({
     this.setState({
       show:false
     })
+    if(this.props.okFun=='goBack'){
+      //返回
+      window.history.go(-1);
+    }
   },
 
   //这个非常非常重要！！

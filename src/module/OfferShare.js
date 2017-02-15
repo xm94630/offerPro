@@ -1,7 +1,7 @@
 import React from 'react'
 import pic from '../img/fontPic2.png'
 import offerPic from '../img/offerPic.png'
-import offer from '../img/offer.jpeg'
+import offer from '../img/offer.png'
 import ad from '../img/ad.png'
 import { createStore } from 'redux'
 import { Provider, connect } from 'react-redux'
@@ -35,6 +35,9 @@ var offerShare = React.createClass({
           var school = data.school;
           var major = data.major;
           render(reName,imgNew,school,major);
+
+          document.getElementsByTagName('title')[0].innerHTML = '【录取喜报】恭喜 '+reName+' 同学获得 '+school+' 录取OFFER！';
+
         }
     });
 

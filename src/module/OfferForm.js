@@ -218,7 +218,7 @@ export default React.createClass({
           <div type="text" className="myInput submitBtn W80P MT20" onClick={this.handleClick} >提 交</div>
       
           <Loading isShow={this.state.loadingShow}/>
-          <Dialog isShow={this.state.diglogShow} info={this.state.ajaxInfo} type="okBtn"/>
+          <Dialog isShow={this.state.diglogShow} info={this.state.ajaxInfo} type="okBtn" okFun="goBack"/>
       </div>
     )
   }
