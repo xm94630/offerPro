@@ -9,6 +9,7 @@ export default React.createClass({
 
   getInitialState(){
     return{
+      "okFun":"",
       "name": "",
       "mobile": "",
       "country": "",
@@ -20,6 +21,7 @@ export default React.createClass({
   },
 
   componentDidMount() {
+
   },
 
   setValue(e){
@@ -111,27 +113,33 @@ export default React.createClass({
     //提交学生信息
     $.ajax({
         type: "POST",
-        url: "http://os2017.51qiantu.com/student/save",
-        dataType:"json",
+        url: "http://liuxue.xdf.cn/wcm/WCMV6/xdf/do_custom.jsp",
+        dataType:"jsonp",
+        jsonp:"jsonCallBack",
         data: {
-          "name": this.state.name,
-          "mobile": this.state.mobile,
-          "country": this.state.country,
-          "region": this.state.region,
-          "degree": this.state.degree
+          "jumpUrl": '',
+          "Remark": '新媒体',
+          "isPC": 'no',
+          "isSend": 'yes',
+          "Name": this.state.name,
+          "Phone": this.state.mobile,
+          "Country": this.state.country,
+          "City": this.state.region,
+          "Degree": this.state.degree
         },
         success: function(data){
-          if(data && data.code==1){
+          if(data && data.count==1){
             that.setState({
+              okFun:'goBack',
               loadingShow:false,
               diglogShow:true,
-              ajaxInfo:data.ret
+              ajaxInfo:'提交成功'
             });
           }else{
             that.setState({
               loadingShow:false,
               diglogShow:true,
-              ajaxInfo:data.ret
+              ajaxInfo:'提交失败'
             });
           };
         }
@@ -218,7 +226,7 @@ export default React.createClass({
           <div type="text" className="myInput submitBtn W80P MT20" onClick={this.handleClick} >提 交</div>
       
           <Loading isShow={this.state.loadingShow}/>
-          <Dialog isShow={this.state.diglogShow} info={this.state.ajaxInfo} type="okBtn" okFun="goBack"/>
+          <Dialog isShow={this.state.diglogShow} info={this.state.ajaxInfo} type="okBtn" okFun={this.state.okFun}/>
       </div>
     )
   }
