@@ -4,8 +4,10 @@ import $ from 'jquery'
 import {hashHistory} from 'react-router';
 import Loading from './Loading'
 import Dialog from './Dialog.js'
+import { createStore } from 'redux'
+import { Provider, connect } from 'react-redux'
 
-export default React.createClass({
+var offerForm =  React.createClass({
 
   getInitialState(){
     return{
@@ -28,8 +30,6 @@ export default React.createClass({
 
     var v = e.target.value;
     var name = e.target.name;
-    console.log(v)
-    console.log(name)
     switch(name){
       case 'name':
         this.setState({
@@ -117,7 +117,7 @@ export default React.createClass({
         dataType:"jsonp",
         jsonp:"jsonCallBack",
         data: {
-          "jumpUrl": '',
+          "jumpUrl": this.props.shareUrl,
           "Remark": '新媒体',
           "isPC": 'no',
           "isSend": 'yes',
@@ -231,3 +231,23 @@ export default React.createClass({
     )
   }
 })
+
+
+// Map Redux state to component props
+function mapStateToProps(state) {
+  return {
+    shareUrl: state.shareUrl
+  }
+}
+// Map Redux actions to component props
+function mapDispatchToProps(dispatch) {
+  return {
+  }
+}
+//包装 OfferLists
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(offerForm);
+
+

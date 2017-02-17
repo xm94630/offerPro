@@ -23,6 +23,9 @@ var offerShare = React.createClass({
     var that = this;
     var offerId = this.props.params.offerId;
 
+    //保存本页面地址
+    this.props.saveUrl( window.location.href  );
+
     //判断的依据就是，如果是一步一步得到的，那么是有redux存储的！
     if(that.props.offerIndex===-1){
       //这个是微信上直接得到的分享页面
@@ -88,7 +91,10 @@ var offerShare = React.createClass({
 				<span>获得 {this.state.school} - {this.state.major} 录取offer！</span>
     		</div>
     		<div type="text" className="myInput submitBtn W80P MT10" onClick={this.shareFun}>分享喜悦</div>
-    		<div className="adImgBox" ref={(adBox) => { this.adBox = adBox; }} ><a href="/#/OfferForm"><img src={ad} width="100%"/></a></div>
+    		
+        <div className="adImgBox" ref={(adBox) => { this.adBox = adBox; }} >
+          <a href="/#/OfferForm"><img src={ad} width="100%"/></a>
+        </div>
     	
         <Sharing show={this.state.shareBox}/>
       </div>
@@ -100,6 +106,7 @@ var offerShare = React.createClass({
 // Map Redux state to component props
 function mapStateToProps(state) {
   return {
+    shareUrl: state.shareUrl,
     ID: state.ID,
     name: state.name,
     offers: state.offers,
@@ -109,7 +116,7 @@ function mapStateToProps(state) {
 // Map Redux actions to component props
 function mapDispatchToProps(dispatch) {
   return {
-    //saveOfferIndex: (offerIndex) => dispatch({type: 'saveOfferIndex',offerIndex:offerIndex})
+    saveUrl: (shareUrl) => dispatch({type: 'saveUrl',shareUrl:shareUrl})
   }
 }
 //包装 OfferLists

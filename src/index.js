@@ -14,19 +14,26 @@ var l = console.log;
 
 
 // Reducer
-function counter(state= {ID:'',name:'',offers:[{}],offerIndex:-1}, action) {
+function counter(state= {ID:'',name:'',offers:[{}],offerIndex:-1,shareUrl:''}, action) {
   const ID = state.ID
   const name = state.name
   const offers = state.offers
   const offerIndex = state.offerIndex
+  const shareUrl = state.shareUrl
   switch (action.type) {
-    case 'saveID':
+
+    case 'saveUrl':
       return { 
+        shareUrl: action.shareUrl,
+        offerIndex: offerIndex
+      }
+    case 'saveID':
+       return {
         ID: action.ID,
         name: name,
         offers: offers,
         offerIndex: offerIndex
-      }
+       }
     case 'saveName':
       return { 
         ID: ID,

@@ -146,8 +146,8 @@ var offerEidt = React.createClass({
           "id":offerID
         },
         success: function(data){
-            console.log('+>');
-            console.log(data);
+            //console.log('+>');
+            //console.log(data);
             //页面跳转到分享页面
             hashHistory.push('/OfferShare/'+offerID);
         }
