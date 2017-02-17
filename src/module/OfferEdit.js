@@ -25,7 +25,10 @@ var offerEidt = React.createClass({
     var that = this;
 
     function start(){
+
         //获取offer的ID
+        console.log('====>')
+        console.log(that.props)
         var offerID = that.props.offers[that.props.offerIndex].id;
         
         //canvas相关

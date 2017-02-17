@@ -25,6 +25,10 @@ function counter(state= {ID:'',name:'',offers:[{}],offerIndex:-1,shareUrl:''}, a
     case 'saveUrl':
       return { 
         shareUrl: action.shareUrl,
+
+        ID: action.ID,
+        name: name,
+        offers: offers,
         offerIndex: offerIndex
       }
     case 'saveID':
