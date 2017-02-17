@@ -16,6 +16,10 @@ var OfferLists = React.createClass({
 	  	var offers = this.props.offers
 	  	var offerIndex = this.props.offerIndex
 
+	  	//指导老师
+	  	//接口中的offer老师都是一样的，读取其中一个就行~
+	  	var teacher = this.props.offers[0].teacher;
+
 	  	var selectOffer = this.selectOffer
 	    return (
 	    	<div className="page OfferLists">
@@ -45,7 +49,7 @@ var OfferLists = React.createClass({
 	    			}
 
 	    	    </div>
-	    	    <p className="mini MT2 MB15">指导老师：<span className="teacherName">岳不群</span></p>
+	    	    <p className="mini MT2 MB15">指导老师：<span className="teacherName">{teacher}</span></p>
 	    	</div>
 	    )
   	}

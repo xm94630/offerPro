@@ -117,6 +117,7 @@ var offerForm =  React.createClass({
         dataType:"jsonp",
         jsonp:"jsonCallBack",
         data: {
+          "Random": (new Date()).valueOf(),
           "jumpUrl": this.props.shareUrl,
           "Remark": '新媒体',
           "isPC": 'no',
