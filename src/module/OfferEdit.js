@@ -40,9 +40,17 @@ var offerEidt = React.createClass({
             ctx = document.getElementById('myCanvas').getContext("2d");
             var w = $(window).width()
             $('#myCanvas').attr("width",w).attr("height",w); 
-            var img = new Image();         
-            img.src = imgUrl;  
-            img.crossOrigin="anonymous";
+            var img = new Image();   
+
+            //这个非常的重要！
+            //在回退时候，这个不会被缓存，这样子回退就不会报错了
+            img.src = imgUrl +'?'+ new Date().getTime();  
+
+            //这个两个都可以的
+            //img.crossOrigin="anonymous";
+            img.setAttribute('crossOrigin', 'anonymous');
+
+
             img.onload = function() {  
               ctx.drawImage(img, 0, 0,w,w);  
             } 
