@@ -117,16 +117,18 @@ var offerForm =  React.createClass({
         dataType:"jsonp",
         jsonp:"jsonCallBack",
         data: {
-          "Random": (new Date()).valueOf(),
-          "jumpUrl": this.props.shareUrl,
-          "Remark": '新媒体',
-          "isPC": 'no',
-          "isSend": 'yes',
-          "Name": this.state.name,
-          "Phone": this.state.mobile,
-          "Country": this.state.country,
-          "City": this.state.region,
-          "Degree": this.state.degree
+          "Random": encodeURIComponent((new Date()).valueOf()),
+          "jumpUrl": encodeURIComponent(this.props.shareUrl),
+          "Sourcechannel": encodeURIComponent('新媒体'),
+          "Remark": encodeURIComponent('新媒体'),
+          "Way": encodeURIComponent('新媒体活动'),
+          "isPC": encodeURIComponent('no'),
+          "isSend": encodeURIComponent('yes'),
+          "Name": encodeURIComponent(this.state.name),
+          "Phone": encodeURIComponent(this.state.mobile),
+          "Country": encodeURIComponent(this.state.country),
+          "City": encodeURIComponent(this.state.region),
+          "Degree": encodeURIComponent(this.state.degree)
         },
         success: function(data){
           if(data && data.count==1){
