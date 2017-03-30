@@ -35,27 +35,34 @@ var offerEidt = React.createClass({
         var mousePressed = false;
         var lastX, lastY;
         var ctx; 
+
+        //图片放大比例因子（这个参数会直接影响，canvas中图片的质量）
+        var scaleImage = 4;
         
         function InitThis(imgUrl) {
             ctx = document.getElementById('myCanvas').getContext("2d");
             var w = $(window).width()
-            $('#myCanvas').attr("width",w).attr("height",w); 
+            $('#myCanvas').attr("width",scaleImage*w).attr("height",scaleImage*w); 
             var img = new Image();   
 
             //这个非常的重要！
             //在回退时候，这个不会被缓存，这样子回退就不会报错了
             img.src = imgUrl +'?'+ new Date().getTime();  
+            //img.src = 'http://192.168.1.4:3000/static/media/xxx.6367698e.png'; 
 
             //这个两个都可以的
             //img.crossOrigin="anonymous";
             img.setAttribute('crossOrigin', 'anonymous');
 
-
             img.onload = function() {  
-              ctx.drawImage(img, 0, 0,w,w);  
+              ctx.drawImage(img, 0, 0,scaleImage * w,scaleImage * w);  
             } 
 
             function bindTouchEvent(){
+
+                var leftPadding= $('#myCanvas').offset().left
+                var topPadding= $('#myCanvas').offset().top
+
                 $('#myCanvas').on('touchstart',function(e){
 
                     //只有允许编辑画面下生效
@@ -64,7 +71,7 @@ var offerEidt = React.createClass({
                         mousePressed = true;
                         var pageX = (e.pageX || e.originalEvent.touches[0].pageX)
                         var pageY = (e.pageY || e.originalEvent.touches[0].pageY)
-                        Draw(pageX - $(this).offset().left, pageY - $(this).offset().top, false);  
+                        Draw(scaleImage *(pageX - leftPadding), scaleImage *(pageY - topPadding), false);  
                     }  
                 })
              
@@ -74,7 +81,7 @@ var offerEidt = React.createClass({
                         var pageX = (e.pageX || e.originalEvent.touches[0].pageX)
                         var pageY = (e.pageY || e.originalEvent.touches[0].pageY)
                         if (mousePressed) {
-                            Draw(pageX - $(this).offset().left, pageY - $(this).offset().top, true);
+                            Draw(scaleImage*(pageX - leftPadding), scaleImage*(pageY - topPadding), true);
                         }
                     }
                 });
@@ -92,7 +99,7 @@ var offerEidt = React.createClass({
                 ctx.strokeStyle = '#333';
                 ctx.filter = "blur(1px)"; //模糊效果
                 //ctx.globalAlpha=1
-                ctx.lineWidth = 10;
+                ctx.lineWidth = scaleImage * 10;
                 ctx.lineJoin = "round";
                 ctx.moveTo(lastX, lastY);
                 ctx.lineTo(x, y);

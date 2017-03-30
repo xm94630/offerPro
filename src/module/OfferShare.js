@@ -62,12 +62,16 @@ var offerShare = React.createClass({
 
       //canvas读取读片
       var ctx = document.getElementById('myCanvas').getContext("2d");
+
+      //图片放大比例因子（这个参数会直接影响，canvas中图片的质量）
+      var scaleImage = 4;
+
       var w = $(window).width()
-      $('#myCanvas').attr("width",w).attr("height",w); 
+      $('#myCanvas').attr("width",scaleImage*w).attr("height",scaleImage*w)
       var image = new Image();         
       image.src = 'http://os2017.51qiantu.com/'+img;  
       image.onload = function() {  
-        ctx.drawImage(image, 0, 0,w,w);  
+        ctx.drawImage(image, 0, 0,scaleImage * w,scaleImage * w);
       } 
     }
   },
