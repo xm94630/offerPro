@@ -1,6 +1,5 @@
 import React from 'react'
 import pic1 from '../img/pic1.png'
-import offer from '../img/offer.png'
 import $ from 'jquery'
 import {hashHistory} from 'react-router';
 import Loading from './Loading'
@@ -72,7 +71,6 @@ var OfferIndex = React.createClass({
   render() {
     return (
       <div className="page OfferIndex">
-          <img src={offer} width="100%"/>
           <img src={pic1} width="100%"/>
           <p className="MT10">输入身份证号码<br/>快速查询您的offer信息</p>
           <div className="sanjiao MT10"></div>
