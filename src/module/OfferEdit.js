@@ -1,6 +1,7 @@
 import React from 'react'
 import pic from '../img/fontPic2.png'
 import offerPic from '../img/offerPic.png'
+import offerPic2 from '../img/goIndex.png'
 import $ from 'jquery'
 import { createStore } from 'redux'
 import { Provider, connect } from 'react-redux'
@@ -21,6 +22,9 @@ var offerEidt = React.createClass({
   },
 
   componentDidMount() {
+
+    //记录标记
+    localStorage.setItem('who', 'my');
 
     var that = this;
 
@@ -166,8 +170,10 @@ var offerEidt = React.createClass({
         success: function(data){
             //console.log('+>');
             //console.log(data);
+            
             //页面跳转到分享页面
-            hashHistory.push('/OfferShare/'+offerID);
+            //hashHistory.push('/OfferShare/'+offerID);
+            window.location.href = '/sharePage.html?offerId='+offerID;
         }
     });
   },

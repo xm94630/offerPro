@@ -7,6 +7,9 @@ import Dialog from './Dialog.js'
 import { createStore } from 'redux'
 import { Provider, connect } from 'react-redux'
 
+//清除
+localStorage.clear();
+
 var OfferIndex = React.createClass({
 
   getInitialState(){
