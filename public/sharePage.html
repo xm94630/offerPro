@@ -103,6 +103,7 @@
       $('[node-type="reName"]').html(name);
       $('[node-type="myInfo"]').html('获得 '+school+' - '+major+' 录取offer！');
 
+      console.log(localStorage.getItem('who'))
       if(localStorage.getItem('who')==='my'){
           //是为自己跳转过来的
           $('[node-type="goIndex"]').show();

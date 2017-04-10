@@ -7,6 +7,10 @@ import { createStore } from 'redux'
 import { Provider, connect } from 'react-redux'
 import {hashHistory} from 'react-router';
 
+
+//记录标记
+localStorage.setItem('who', 'my');
+
 var offerEidt = React.createClass({
   getInitialState:function(){
     return {
@@ -22,9 +26,6 @@ var offerEidt = React.createClass({
   },
 
   componentDidMount() {
-
-    //记录标记
-    localStorage.setItem('who', 'my');
 
     var that = this;
 
