@@ -106,13 +106,13 @@
       console.log(localStorage.getItem('who'))
       if(localStorage.getItem('who')==='my'){
           //是为自己跳转过来的
-          $('[node-type="goIndex"]').show();
+          //$('[node-type="goIndex"]').show();
           $('[node-type="goForm"]').hide();
           //清除
           localStorage.clear();
       }else{
           //是分享过来的
-          $('[node-type="goIndex"]').hide();
+          //$('[node-type="goIndex"]').hide();
           $('[node-type="goForm"]').show();
       }
 
